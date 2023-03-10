@@ -1,0 +1,26 @@
+APP:
+  RELEASE: false
+  ENV: "develop"
+  PORT: ":9090"
+ 
+HTTP_SERVER:
+  READ_TIMEOUT: 5s
+  WRITE_TIMEOUT: 10s
+  IDLE_TIMEOUT: 120s
+
+POSTGRE_SQL:
+  HOST: "localhost"
+  USERNAME: "admin"
+  PASSWORD: "P@ssw0rd"
+  PORT: 5432
+  DATABASE_NAME: "cashier"
+  DRIVER_NAME: "postgres"
+  ENABLE: true
+
+SWAGGER:
+  TITLE: "Stock api dev docs"
+  DESCRIPTION: "template API is application to manage stock"
+  VERSION: "1.0"
+  HOST: "stock-api-dev.clicksbiz.com"
+  BASE_URL: "/api/v1"
+  ENABLE: true
