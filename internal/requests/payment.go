@@ -17,3 +17,9 @@ type AddMoneyRequest struct {
 		CashType models.CashType `json:"cash_type"`
 	} `json:"receiveds"`
 }
+
+// UpdateCashNoteRequest update cash note request
+type UpdateCashNoteRequest struct {
+	ID     models.CashType `json:"-" path:"id"`
+	Amount int             `json:"amount"`
+}

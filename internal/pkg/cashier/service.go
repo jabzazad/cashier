@@ -16,6 +16,7 @@ type Service interface {
 	GetCashierDesk(c *context.Context) ([]*models.CashAmount, error)
 	CalculateChange(c *context.Context, request *request.PaymentRequest) (*response.ChangesResponse, error)
 	AddCash(c *context.Context, request *request.AddMoneyRequest) error
+	UpdateMoneyNoteAmount(c *context.Context, request *request.UpdateCashNoteRequest) error
 }
 
 type service struct {
@@ -51,7 +52,6 @@ func (s *service) CalculateChange(c *context.Context, request *request.PaymentRe
 	var totalReceivedCash float64
 	cashDesk, err := s.GetCashierDesk(c)
 	if err != nil {
-		logger.Logger.Errorf("get cashier desk data error: %s", err)
 		return nil, err
 	}
 
@@ -96,7 +96,6 @@ func (s *service) AddCash(c *context.Context, request *request.AddMoneyRequest) 
 	defer s.mutex.Unlock()
 	cashDesk, err := s.GetCashierDesk(c)
 	if err != nil {
-		logger.Logger.Errorf("get cashier desk data error: %s", err)
 		return err
 	}
 
@@ -105,6 +104,29 @@ func (s *service) AddCash(c *context.Context, request *request.AddMoneyRequest) 
 			if cash.CashType == requestCash.CashType {
 				cash.Amount += requestCash.Amount
 			}
+		}
+	}
+
+	err = utils.WriteJsonFile(s.env.CashierDeskPath, cashDesk)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// UpdateMoneyNoteAmount update money note amount
+func (s *service) UpdateMoneyNoteAmount(c *context.Context, request *request.UpdateCashNoteRequest) error {
+	s.mutex.Lock()
+	defer s.mutex.Unlock()
+	cashDesk, err := s.GetCashierDesk(c)
+	if err != nil {
+		return err
+	}
+
+	for _, cash := range cashDesk {
+		if cash.CashType == request.ID {
+			cash.Amount = request.Amount
 		}
 	}
 

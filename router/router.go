@@ -67,6 +67,7 @@ func NewWithOptions(options *Options) *echo.Echo {
 		cashierGroup.GET("/cash", cashierEndpoint.GetCashierDesk)
 		cashierGroup.POST("/cash", cashierEndpoint.AddCash)
 		cashierGroup.POST("/payments", cashierEndpoint.CalculateChange)
+		cashierGroup.PUT("/cash/:id", cashierEndpoint.UpdateMoneyNoteAmount)
 	}
 
 	return router

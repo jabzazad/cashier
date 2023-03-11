@@ -13,6 +13,7 @@ type Endpoint interface {
 	CalculateChange(c echo.Context) error
 	GetCashierDesk(c echo.Context) error
 	AddCash(c echo.Context) error
+	UpdateMoneyNoteAmount(c echo.Context) error
 }
 
 type endpoint struct {
@@ -81,4 +82,23 @@ func (ep *endpoint) GetCashierDesk(c echo.Context) error {
 // @Router /cashier/cash [post]
 func (ep *endpoint) AddCash(c echo.Context) error {
 	return handlers.ResponseSuccess(c, ep.service.AddCash, &request.AddMoneyRequest{})
+}
+
+// UpdateMoneyNoteAmount update money note amount
+// @Tags Cashier
+// @Summary UpdateMoneyNoteAmount
+// @Description Update money note amount
+// @Accept json
+// @Produce json
+// @Param Accept-Language header string false "(en, th)" default(th)
+// @Param id path int true "Cash Type"
+// @Param cash body request.UpdateCashNoteRequest true "Cash Request"
+// @Success 200 {object} models.Message
+// @Failure 400 {object} models.Message
+// @Failure 401 {object} models.Message
+// @Failure 404 {object} models.Message
+// @Failure 410 {object} models.Message
+// @Router /cashier/cash/{id} [put]
+func (ep *endpoint) UpdateMoneyNoteAmount(c echo.Context) error {
+	return handlers.ResponseSuccess(c, ep.service.UpdateMoneyNoteAmount, &request.UpdateCashNoteRequest{})
 }
