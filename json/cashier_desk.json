@@ -1,38 +1,38 @@
-[{
-    "cash_type": 1,
-    "amount": 10
-},
-{
-
-    "cash_type": 2,
-    "amount": 20
-},{
-
-    "cash_type": 3,
-    "amount": 15
-},{
-
-    "cash_type": 4,
-    "amount": 20
-},{
-
-    "cash_type": 5,
-    "amount": 30
-},{
-
-    "cash_type": 6,
-    "amount": 20
-},{
-
-    "cash_type": 7,
-    "amount": 20
-},{
-
-    "cash_type": 8,
-    "amount": 20
-},{
-
-    "cash_type": 9,
-    "amount": 50
-}
+[
+    {
+        "cash_value ": 1000,
+        "amount": 10
+    },
+    {
+        "cash_value ": 500,
+        "amount": 20
+    },
+    {
+        "cash_value ": 100,
+        "amount": 15
+    },
+    {
+        "cash_value ": 50,
+        "amount": 20
+    },
+    {
+        "cash_value ": 20,
+        "amount": 30
+    },
+    {
+        "cash_value ": 10,
+        "amount": 20
+    },
+    {
+        "cash_value ": 5,
+        "amount": 20
+    },
+    {
+        "cash_value ": 1,
+        "amount": 20
+    },
+    {
+        "cash_value ": 0.25,
+        "amount": 50
+    }
 ]

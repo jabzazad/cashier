@@ -1,25 +1,23 @@
 package request
 
-import "cashier-api/internal/models"
-
 // PaymentRequest payment request
 type PaymentRequest struct {
 	ProductPrice float64 `json:"product_price"`
-	Receiveds    []struct {
-		Amount   int             `json:"amount"`
-		CashType models.CashType `json:"cash_type"`
-	} `json:"receiveds"`
+	Receives     []struct {
+		Amount    int     `json:"amount"`
+		CashValue float64 `json:"cash_value"`
+	} `json:"receives"`
 }
 
 type AddMoneyRequest struct {
 	Receiveds []struct {
-		Amount   int             `json:"amount"`
-		CashType models.CashType `json:"cash_type"`
+		Amount    int     `json:"amount"`
+		CashValue float64 `json:"cash_value"`
 	} `json:"receiveds"`
 }
 
 // UpdateCashNoteRequest update cash note request
 type UpdateCashNoteRequest struct {
-	ID     models.CashType `json:"-" path:"id"`
-	Amount int             `json:"amount"`
+	CashValue float64 `json:"cash_value" path:"cash_value"`
+	Amount    int     `json:"amount"`
 }

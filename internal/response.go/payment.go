@@ -1,13 +1,11 @@
 package response
 
-import "cashier-api/internal/models"
-
 // ChangeResponse change response
 type ChangesResponse struct {
-	Changes []*ChangeResponse `json:"changes"`
+	Changes []*ChangeResponse `json:"changes,omitempty"`
 }
 
 type ChangeResponse struct {
-	Amount   int             `json:"amount"`
-	CashType models.CashType `json:"cash_type"`
+	Amount    int     `json:"amount"`
+	CashValue float64 `json:"cash_value"`
 }

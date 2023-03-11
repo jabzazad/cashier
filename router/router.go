@@ -2,11 +2,10 @@ package router
 
 import (
 	"cashier-api/core/config"
+	"cashier-api/core/errors"
 	"cashier-api/core/validator"
-	"cashier-api/internal/errors"
 	"cashier-api/internal/pkg/cashier"
 	"cashier-api/internal/pkg/healthcheck"
-	"cashier-api/internal/pkg/sequence"
 
 	customMiddleware "cashier-api/middleware"
 
@@ -54,12 +53,6 @@ func NewWithOptions(options *Options) *echo.Echo {
 
 	healthCheckEndpoint := healthcheck.NewEndpoint()
 	api.GET("/healthz", healthCheckEndpoint.HealthCheck)
-
-	sequenceEndpoint := sequence.NewEndpoint()
-	sequenceGroup := api.Group("/sequences")
-	{
-		sequenceGroup.GET("", sequenceEndpoint.GetResultSequence)
-	}
 
 	cashierEndpoint := cashier.NewEndpoint()
 	cashierGroup := api.Group("/cashier")

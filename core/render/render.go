@@ -13,11 +13,6 @@ func JSON(c echo.Context, response interface{}) error {
 		JSON(config.RR.Internal.Success.HTTPStatusCode(), response)
 }
 
-// Download render file
-func Download(c echo.Context, path, fileName string) error {
-	return c.Attachment(path, fileName)
-}
-
 // Error render error to client
 func Error(c echo.Context, err error) error {
 	errMsg := config.RR.Internal.ConnectionError
@@ -26,5 +21,5 @@ func Error(c echo.Context, err error) error {
 	}
 
 	return c.
-		JSON(errMsg.HTTPStatusCode(), errMsg.Error())
+		JSON(errMsg.HTTPStatusCode(), errMsg)
 }

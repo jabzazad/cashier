@@ -8,7 +8,6 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
-	"golang.org/x/crypto/bcrypt"
 )
 
 var (
@@ -64,52 +63,12 @@ func (lm *localizationMessage) UnmarshalJSON(data []byte) error {
 
 // Results return results
 type Results struct {
-	DuplicateError              Error `mapstructure:"duplicate_error"`
-	InvalidParameters           Error `mapstructure:"invalid_parameters"`
-	InvalidID                   Error `mapstructure:"invalid_id"`
-	DataNotFound                Error `mapstructure:"data_notfound"`
-	InvalidLoginType            Error `mapstructure:"invalid_login_type"`
-	InvalidEmail                Error `mapstructure:"invalid_email"`
-	InvalidPassword             Error `mapstructure:"invalid_password"`
-	InvalidFacebookToken        Error `mapstructure:"invalid_facebook_token"`
-	InvalidGoogleToken          Error `mapstructure:"invalid_google_token"`
-	InvalidRequest              Error `mapstructure:"invalid_request"`
-	InvalidPermission           Error `mapstructure:"invalid_permission"`
-	InvalidRole                 Error `mapstructure:"invalid_role"`
-	AlreadyPhoneNumber          Error `mapstructure:"already_phone_number"`
-	AlreadyIDCard               Error `mapstructure:"already_id_card"`
-	InvalidIDCard               Error `mapstructure:"invalid_id_card"`
-	InvalidPhoneNumber          Error `mapstructure:"invalid_phone_number"`
-	InvalidPronoun              Error `mapstructure:"invalid_pronoun"`
-	InvalidFirstNameAllSpacebar Error `mapstructure:"invalid_first_name_all_spacebar"`
-	InvalidLastNameAllSpacebar  Error `mapstructure:"invalid_last_name_all_spacebar"`
-	InvalidAmountPassword       Error `mapstructure:"invalid_amount_password"`
-	InvalidIDCardOrPhoneNumber  Error `mapstructure:"invalid_id_card_or_phone_number"`
-	PasswordNotMatch            Error `mapstructure:"password_not_match"`
-	InvalidPlotName             Error `mapstructure:"invalid_plot_name"`
-	InvalidUsernameOrPass       Error `mapstructure:"invalid_username_or_password"`
-	InvalidStartAndEndWeek      Error `mapstructure:"invalid_start_end_week"`
-	SearchNotFound              Error `mapstructure:"search_not_found"`
-	InvalidLoginRole            Error `mapstructure:"invalid_login_role"`
-	PermissionNotFound          Error `mapstructure:"permission_not_found"`
-	PermissionDenied            Error `mapstructure:"permission_denied"`
-	AlreadyEmail                Error `mapstructure:"already_email"`
-	InvalidOTP                  Error `mapstructure:"invalid_otp"`
-	EmailOrPasswordIncorrect    Error `mapstructure:"email_or_password_incorrect"`
-	CannotChangeYourSelfRole    Error `mapstructure:"connot_change_yourself_role"`
-	InvalidOldPassword          Error `mapstructure:"invalid_old_password"`
-	AlreadyInOrganaization      Error `mapstructure:"already_in_organization"`
-	HasOneAdmin                 Error `mapstructure:"has_only_admin"`
-	InvalidSMS                  Error `mapstructure:"invalid_sms"`
-	InsufficientMoney           Error `mapstructure:"insufficient_money"`
-	Internal                    struct {
-		Success           Error `mapstructure:"success"`
-		UploadSuccess     Error `mapstructure:"upload_success"`
-		General           Error `mapstructure:"general"`
-		BadRequest        Error `mapstructure:"bad_request"`
-		ConnectionError   Error `mapstructure:"connection_error"`
-		DBSessionNotFound Error `mapstructure:"db_session_not_found"`
-		Unauthorized      Error `mapstructure:"unauthorized"`
+	InsufficientMoney Error `mapstructure:"insufficient_money"`
+	Internal          struct {
+		Success         Error `mapstructure:"success"`
+		General         Error `mapstructure:"general"`
+		BadRequest      Error `mapstructure:"bad_request"`
+		ConnectionError Error `mapstructure:"connection_error"`
 	} `mapstructure:"internal"`
 }
 
@@ -134,17 +93,13 @@ func (r *Results) GetResponse(err error) error {
 	} else if _, ok := err.(Error); ok {
 		return err
 	}
-	switch true {
-	case err == bcrypt.ErrMismatchedHashAndPassword:
-		return r.InvalidPassword
-	default:
-		return Error{
-			Code: 0,
-			Message: localizationMessage{
-				EN: err.Error(),
-				TH: err.Error(),
-			},
-		}
+
+	return Error{
+		Code: 0,
+		Message: localizationMessage{
+			EN: err.Error(),
+			TH: err.Error(),
+		},
 	}
 }
 

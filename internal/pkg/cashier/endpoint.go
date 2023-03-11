@@ -40,10 +40,10 @@ func NewEndpoint() Endpoint {
 // @Param Accept-Language header string false "(en, th)" default(th)
 // @Param payment body request.PaymentRequest true "Payment Request"
 // @Success 200 {object} response.ChangesResponse
-// @Failure 400 {object} models.Message
-// @Failure 401 {object} models.Message
-// @Failure 404 {object} models.Message
-// @Failure 410 {object} models.Message
+// @Failure 400 {object} response.Message
+// @Failure 401 {object} response.Message
+// @Failure 404 {object} response.Message
+// @Failure 410 {object} response.Message
 // @Router /cashier/payments [post]
 func (ep *endpoint) CalculateChange(c echo.Context) error {
 	return handlers.ResponseObject(c, ep.service.CalculateChange, &request.PaymentRequest{})
@@ -52,15 +52,15 @@ func (ep *endpoint) CalculateChange(c echo.Context) error {
 // GetCashierDesk get cashier desk
 // @Tags Cashier
 // @Summary GetCashierDesk
-// @Description Get cashier desk enum of cash type: {1 : 1000 baht 2 : 500 baht 3 : 100 baht,4 : 50 baht,5 : 20 baht,6 : 10 baht,7 : 5 baht,8 : 1 baht,9 : 0.25 baht }
+// @Description Get cashier desk
 // @Accept json
 // @Produce json
 // @Param Accept-Language header string false "(en, th)" default(th)
 // @Success 200 {array} models.CashAmount
-// @Failure 400 {object} models.Message
-// @Failure 401 {object} models.Message
-// @Failure 404 {object} models.Message
-// @Failure 410 {object} models.Message
+// @Failure 400 {object} response.Message
+// @Failure 401 {object} response.Message
+// @Failure 404 {object} response.Message
+// @Failure 410 {object} response.Message
 // @Router /cashier/cash [get]
 func (ep *endpoint) GetCashierDesk(c echo.Context) error {
 	return handlers.ResponseObjectWithoutRequest(c, ep.service.GetCashierDesk)
@@ -74,11 +74,11 @@ func (ep *endpoint) GetCashierDesk(c echo.Context) error {
 // @Produce json
 // @Param Accept-Language header string false "(en, th)" default(th)
 // @Param cash body request.AddMoneyRequest true "Cash Request"
-// @Success 200 {object} models.Message
-// @Failure 400 {object} models.Message
-// @Failure 401 {object} models.Message
-// @Failure 404 {object} models.Message
-// @Failure 410 {object} models.Message
+// @Success 200 {object} response.Message
+// @Failure 400 {object} response.Message
+// @Failure 401 {object} response.Message
+// @Failure 404 {object} response.Message
+// @Failure 410 {object} response.Message
 // @Router /cashier/cash [post]
 func (ep *endpoint) AddCash(c echo.Context) error {
 	return handlers.ResponseSuccess(c, ep.service.AddCash, &request.AddMoneyRequest{})
@@ -93,11 +93,11 @@ func (ep *endpoint) AddCash(c echo.Context) error {
 // @Param Accept-Language header string false "(en, th)" default(th)
 // @Param id path int true "Cash Type"
 // @Param cash body request.UpdateCashNoteRequest true "Cash Request"
-// @Success 200 {object} models.Message
-// @Failure 400 {object} models.Message
-// @Failure 401 {object} models.Message
-// @Failure 404 {object} models.Message
-// @Failure 410 {object} models.Message
+// @Success 200 {object} response.Message
+// @Failure 400 {object} response.Message
+// @Failure 401 {object} response.Message
+// @Failure 404 {object} response.Message
+// @Failure 410 {object} response.Message
 // @Router /cashier/cash/{id} [put]
 func (ep *endpoint) UpdateMoneyNoteAmount(c echo.Context) error {
 	return handlers.ResponseSuccess(c, ep.service.UpdateMoneyNoteAmount, &request.UpdateCashNoteRequest{})

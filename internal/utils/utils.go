@@ -6,27 +6,6 @@ import (
 	"os"
 )
 
-// IsSliceStringChanged check slice string when it was change
-func IsSliceStringChanged(original, compare []string) bool {
-	if len(original) != len(compare) {
-		return true
-	}
-
-	var count int
-	for _, r := range compare {
-		var i int
-		for i <= len(original)-1 {
-			if r == original[i] {
-				count++
-				break
-			}
-			i++
-		}
-	}
-
-	return count != len(original)
-}
-
 // ReadJSONFile read json file
 func ReadJSONFile(path string, entities interface{}) error {
 	data, err := os.ReadFile(path)

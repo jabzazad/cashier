@@ -12,9 +12,8 @@ $ swag init
 
 3. Run `go run main.go`
 
-mockgen -package=repositories -source={absolutepath} -destination=mock_config_repo.go
-
-# sequence question for first question in same api
+4. open browser 
+http://localhost:9090/api/v1/swagger/
 
 # Diagram service
 <img src="flowchart.jpg"  />

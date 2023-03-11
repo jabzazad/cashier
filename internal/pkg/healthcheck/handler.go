@@ -34,11 +34,11 @@ func NewEndpoint() Endpoint {
 // @Accept json
 // @Produce json
 // @Param Accept-Language header string false "(en, th)" default(th)
-// @Success 200 {object} models.Message
-// @Failure 400 {object} models.Message
-// @Failure 401 {object} models.Message
-// @Failure 404 {object} models.Message
-// @Failure 410 {object} models.Message
+// @Success 200 {object} response.Message
+// @Failure 400 {object} response.Message
+// @Failure 401 {object} response.Message
+// @Failure 404 {object} response.Message
+// @Failure 410 {object} response.Message
 // @Router /healthz [get]
 func (ep *endpoint) HealthCheck(c echo.Context) error {
 	return handlers.ResponseSuccessWithoutRequest(c, ep.service.HealthCheck)

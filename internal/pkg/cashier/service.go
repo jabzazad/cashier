@@ -55,10 +55,10 @@ func (s *service) CalculateChange(c *context.Context, request *request.PaymentRe
 		return nil, err
 	}
 
-	for _, cash := range request.Receiveds {
-		totalReceivedCash += (float64(cash.Amount) * cash.CashType.GetCash())
+	for _, cash := range request.Receives {
+		totalReceivedCash += (float64(cash.Amount) * cash.CashValue)
 		for _, cashierCash := range cashDesk {
-			if cashierCash.CashType == cash.CashType {
+			if cashierCash.CashValue == cash.CashValue {
 				cashierCash.Amount += cash.Amount
 			}
 		}
@@ -69,12 +69,16 @@ func (s *service) CalculateChange(c *context.Context, request *request.PaymentRe
 	for _, cash := range cashDesk {
 		used := s.FindUsedAmount(totalChange, cash)
 		if used > 0 {
-			totalChange -= (float64(used) * cash.CashType.GetCash())
+			totalChange -= (float64(used) * cash.CashValue)
 			cash.Amount -= used
 			changeResponse.Changes = append(changeResponse.Changes, &response.ChangeResponse{
-				CashType: cash.CashType,
-				Amount:   used,
+				CashValue: cash.CashValue,
+				Amount:    used,
 			})
+		}
+
+		if cash.Amount < 0 {
+			return nil, s.rr.Internal.BadRequest
 		}
 	}
 
@@ -101,7 +105,7 @@ func (s *service) AddCash(c *context.Context, request *request.AddMoneyRequest) 
 
 	for _, cash := range cashDesk {
 		for _, requestCash := range request.Receiveds {
-			if cash.CashType == requestCash.CashType {
+			if cash.CashValue == requestCash.CashValue {
 				cash.Amount += requestCash.Amount
 			}
 		}
@@ -125,7 +129,7 @@ func (s *service) UpdateMoneyNoteAmount(c *context.Context, request *request.Upd
 	}
 
 	for _, cash := range cashDesk {
-		if cash.CashType == request.ID {
+		if cash.CashValue == request.CashValue {
 			cash.Amount = request.Amount
 		}
 	}

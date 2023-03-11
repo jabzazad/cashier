@@ -1,185 +1,16 @@
-invalid_parameters:
-  code: 1000000
-  localization:
-    en: "Invalid parameters"
-    th: "พารามิเตอร์ผิด"
-
-data_not_found:
-  code: 1000002
-  localization:
-    en: "Data Not Found"
-    th: "ไม่พบข้อมูล"
-
-duplicate_error:
-  code: 1000003
-  localization:
-    en: "Ducument is duplicate"
-    th: "ข้อมูลเกิดการซ้ำซ้อนกัน"
-
-invalid_request:
-  code: 1000004
-  localization: 
-    en: "The request is invalid"
-    th: "การร้องขอข้อมูลผิด"
-
-invalid_role:
-  code: 1000005
-  localization:
-    en: "Role invalid."
-    th: "สิทธิ์ไม่ถูกต้อง"
-
-invalid_phone_number:
-  code: 1000006
-  localization: 
-    en: "Invalid phone number."
-    th: "เบอร์โทรศัพท์ไม่ถูกต้อง"
-
-invalid_pronoun:
-  code: 1000007
-  localization: 
-    en: "Invalid name title."
-    th: "คำนำหน้าไม่ถูกต้อง"
-
-invalid_first_name_all_spacebar:
-  code: 1000008
-  localization:
-    en: "First name can not use all spacebar."  
-    th: "ชื่อมีค่าว่างทั้งหมด"
-    
-invalid_amount_password:
-  code: 1000009
-  localization: 
-    en: "Password must be mor e than 6 characters."  
-    th: "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษรขึ้นไป"
-
-invalid_id_card:
-  code: 1000010
-  localization: 
-    en: "Your identify number is invalid."  
-    th: "เลขบัตรประชาชนของท่านไม่ถูกต้อง"
-
-invalid_last_name_all_spacebar:
-  code: 1000011
-  localization:
-    en: "Last name can not use all spacebar."  
-    th: "นามสกุลมีค่าว่างทั้งหมด"
-
-password_not_match:
-  code: 1000012
-  localization:
-    en: "Your password is not match."  
-    th: "รหัสผ่านไม่ตรงกัน"    
-
 insufficient_money:
-  code: 1000013
+  code: 1000
   localization:
     en: "Insufficient money for change.Please add money to cash register."  
     th: "ยอดเงินไม่เพียงพอต่อการทอนเงิน กรุณาเติมเงินเข้าเครื่องแคชเชียร์"
 
-# Login
-invalid_email:
-  code: 2000001
-  localization:
-   en: "Email is invalid."
-   th: "รูปแบบอีเมลไม่ถูกต้อง"
-
-invalid_password:
-  code: 2000002
-  localization:
-    en: "Sorry, your password is incorrect."
-    th: "ขออภัย รหัสผ่านของท่านไม่ถูกต้อง"
-
-already_phone_number:
-  code: 2000003
-  localization:
-    en: "Already have user with this phone number."
-    th: "ขออภัย เบอร์โทรศัพท์นี้ได้มีบัญชีผู้ใช้งานแล้ว"
-
-invalid_token:
-  code: 2000004
-  localization:
-    en: "Sorry invalid token."
-    th: "โทเค็นไม่ถูกต้อง"
-
-invalid_permission:
-  code: 2000005
-  localization:
-    en: "Sorry, you don't have permission to do this transaction."
-    th: "ขออภัย สิทธิ์ของคุณไม่สามารถทำรายการนี้ได้"
-
-already_id_card:
-  code: 2000006
-  localization:
-    en: "Already have user with this id card."
-    th: "เลขบัตรประชาชนนี้ได้มีบัญชีผู้ใช้งานแล้ว"
-
-invalid_id_card_or_phone_number:
-  code: 2000007
-  localization:
-    en: "Your ID card or phone number is not found."
-    th: "ไม่พบเลขบัตรประชาชนหรือเบอร์โทรศัพท์ของท่านอยู่ในระบบ"
-
-invalid_username_or_password:
-  code: 2000008
-  localization:
-    en: "Invalid ace id or password Please try again."
-    th: "รหัสพนักงาน หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
-
-invalid_login_role:
-    code: 2000009
-    localization:
-      en: "You don't have permission to login.Please contact HR."
-      th: "คุณไม่มีสิทธิ์เข้าใช้งาน กรุณาติดต่อ HR"    
-
-permission_not_found:
-    code: 2000010
-    localization:
-      en: "Sorry, couldn't find employees.Please check again."
-      th: "ขออภัย ไม่พบข้อมูลพนักงาน กรุณาตรวจสอบอีกครั้ง"   
-
-permission_denied:
-    code: 2000011
-    localization:
-      en: "You don't have permission to access a organization. Please contact the organization admin to give you access permission."
-      th: "คุณไม่มีสิทธิ์ในการเข้าถึงองค์กรนี้ได้ กรุณาติดต่อผู้ดูแลเพื่อให้สิทธิ์การเข้าถึงแก่คุณ"   
-
-already_email:
-  code: 2000012
-  localization:
-    en: "Already have user with this email."
-    th: "ขออภัย อีเมลล์นี้ได้มีบัญชีผู้ใช้งานแล้ว"
-
-invalid_google_token:
-  code: 2000013
-  localization:
-    en: "Invalid google token. Please try again"
-    th: "รหัสกุเกิ้ลโทเค็นไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
-
-invalid_facebook_token:
-  code: 2000014
-  localization:
-    en: "Invalid facebook token. Please try again"
-    th: "รหัสเฟสบุ๊คโทเค็นไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
-
-email_or_password_incorrect:
-  code: 2000015
-  localization:
-    en: "Your email or password is incorrect. Please try again"
-    th: "ขออภัย อีเมลล์หรือรหัสผ่านของท่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง"
-
 # These are what we response to our internal services
 internal:
   success:
-    code: 0
+    code: 200
     localization:
       en: "Success."
       th: "สำเร็จ"
-
-  upload_success:
-    code: 0
-    localization:
-      en: "Upload Success."
-      th: "อัพโหลด สำเร็จ"
 
   general:
     code: 500
@@ -198,15 +29,3 @@ internal:
     localization:
       en: "Connection error. Please try again."
       th: "ขออภัย ระบบไม่สามารถดำเนินการได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง"
-
-  db_session_not_found:
-    code: 404
-    localization:
-      en: "Database session not found. Please try again."
-      th: "ขออภัย ไม่พบข้อมูลในระบบ กรุณาลองใหม่อีกครั้ง"
-
-  unauthorized:
-    code: 401
-    localization:
-      en: "this request at the moment. Please try again later."
-      th: "ขออภัย ระบบไม่อนุญาตให้คุณเข้าถึงการร้องขอได้ กรุณาลองใหม่อีกครั้ง"

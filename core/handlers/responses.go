@@ -4,7 +4,7 @@ import (
 	"cashier-api/core/context"
 	"cashier-api/core/logger"
 	"cashier-api/core/render"
-	"cashier-api/internal/models"
+	"cashier-api/internal/response.go"
 	"reflect"
 
 	"github.com/labstack/echo/v4"
@@ -82,7 +82,7 @@ func ResponseSuccess(c echo.Context, fn interface{}, request interface{}) error 
 		logger.Logger.Errorf("call service error: %s", errObj)
 		return render.Error(c, errObj.(error))
 	}
-	return render.JSON(c, models.NewSuccessMessage())
+	return render.JSON(c, response.NewSuccessMessage())
 }
 
 // ResponseSuccessWithoutRequest handle response success without request
@@ -96,5 +96,5 @@ func ResponseSuccessWithoutRequest(c echo.Context, fn interface{}) error {
 		logger.Logger.Errorf("call service error: %s", errObj)
 		return render.Error(c, errObj.(error))
 	}
-	return render.JSON(c, models.NewSuccessMessage())
+	return render.JSON(c, response.NewSuccessMessage())
 }
