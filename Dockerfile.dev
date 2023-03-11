@@ -23,7 +23,6 @@ COPY --from=builder /api/api .
 COPY --from=builder /api/docs /docs
 
 ADD /configs /configs
-ADD /templates /templates
 ADD /json /json
 
 ENV TZ=Asia/Bangkok
