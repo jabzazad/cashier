@@ -78,7 +78,7 @@ func (s *service) CalculateChange(c *context.Context, request *request.PaymentRe
 		}
 
 		if cash.Amount < 0 {
-			return nil, s.rr.Internal.BadRequest
+			return nil, s.rr.InsufficientMoney
 		}
 	}
 
