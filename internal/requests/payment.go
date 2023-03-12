@@ -9,6 +9,7 @@ type PaymentRequest struct {
 	} `json:"receives"`
 }
 
+// AddMoneyRequest add money request
 type AddMoneyRequest struct {
 	Receiveds []struct {
 		Amount    int     `json:"amount"`
